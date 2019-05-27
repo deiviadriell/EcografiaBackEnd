@@ -57,7 +57,7 @@ namespace WebAPIEcoImagen.Controllers
         {
             int ano = DateTime.Now.Year;
             if(!cliente.IsLoggedIn)
-                cliente.Login("ecoimagenquevedo2019@gmail.com", "ecoimagenquevedo");
+                cliente.Login("xyz", "xyz");
             IEnumerable<INode> nodes = cliente.GetNodes();
             List<INode> folders = nodes.Where(n => n.Type == NodeType.Directory).ToList();
             INode myFolder = folders.FirstOrDefault(f => f.Name == "Respaldos"+ano);
