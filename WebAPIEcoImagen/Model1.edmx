@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BDEcoimagenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cedula" Type="nvarchar" MaxLength="100" />
+          <Property Name="nombres" Type="nvarchar" MaxLength="100" />
+          <Property Name="apellidos" Type="nvarchar" MaxLength="100" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="fecNacimiento" Type="date" />
+          <Property Name="genero" Type="nvarchar" MaxLength="50" />
+          <Property Name="borrado" Type="date" />
+        </EntityType>
+        <EntityType Name="Respaldo">
+          <Key>
+            <PropertyRef Name="idRespaldo" />
+          </Key>
+          <Property Name="idRespaldo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaCreacion" Type="date" />
+          <Property Name="fechaSubida" Type="date" />
+          <Property Name="nombreArchivo" Type="nvarchar" MaxLength="200" />
+          <Property Name="rutaFisica" Type="ntext" />
+          <Property Name="tamano" Type="int" />
+          <Property Name="enlaceDescarga" Type="ntext" />
+          <Property Name="nodoContenedor" Type="ntext" />
+          <Property Name="estado" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Seguimiento">
+          <Key>
+            <PropertyRef Name="idSeguimiento" />
+          </Key>
+          <Property Name="idSeguimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" />
+          <Property Name="sintomas" Type="text" />
+          <Property Name="resultado" Type="text" />
+          <Property Name="medicoReferente" Type="nvarchar" MaxLength="100" />
+          <Property Name="idPaciente" Type="int" />
+          <Property Name="borrado" Type="date" />
+          <Property Name="tipoSeguimiento" Type="nvarchar" MaxLength="100" />
+          <Property Name="ct" Type="int" />
+          <Property Name="gn" Type="int" />
+          <Property Name="cm" Type="int" />
+        </EntityType>
+        <Association Name="FK_Seguimiento_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="backupdb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="BDEcoimagenModelStoreContainer">
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Respaldo" EntityType="Self.Respaldo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seguimiento" EntityType="Self.Seguimiento" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Seguimiento_Paciente" Association="Self.FK_Seguimiento_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Seguimiento" EntitySet="Seguimiento" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BDEcoimagenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="idPaciente" />
+          </Key>
+          <Property Name="idPaciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cedula" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="genero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="borrado" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Seguimientoes" Relationship="Self.FK_Seguimiento_Paciente" FromRole="Paciente" ToRole="Seguimiento" />
+        </EntityType>
+        <EntityType Name="Respaldo">
+          <Key>
+            <PropertyRef Name="idRespaldo" />
+          </Key>
+          <Property Name="idRespaldo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="fechaSubida" Type="DateTime" Precision="0" />
+          <Property Name="nombreArchivo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="rutaFisica" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tamano" Type="Int32" />
+          <Property Name="enlaceDescarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nodoContenedor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Seguimiento">
+          <Key>
+            <PropertyRef Name="idSeguimiento" />
+          </Key>
+          <Property Name="idSeguimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="0" />
+          <Property Name="sintomas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="resultado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="medicoReferente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="idPaciente" Type="Int32" />
+          <Property Name="borrado" Type="DateTime" Precision="0" />
+          <Property Name="tipoSeguimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ct" Type="Int32" />
+          <Property Name="gn" Type="Int32" />
+          <Property Name="cm" Type="Int32" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_Seguimiento_Paciente" FromRole="Seguimiento" ToRole="Paciente" />
+        </EntityType>
+        <Association Name="FK_Seguimiento_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
+          <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="idPaciente" />
+            </Principal>
+            <Dependent Role="Seguimiento">
+              <PropertyRef Name="idPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BDEcoimagenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
+          <EntitySet Name="Respaldoes" EntityType="Self.Respaldo" />
+          <EntitySet Name="Seguimientoes" EntityType="Self.Seguimiento" />
+          <AssociationSet Name="FK_Seguimiento_Paciente" Association="Self.FK_Seguimiento_Paciente">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="Seguimiento" EntitySet="Seguimientoes" />
+          </AssociationSet>
+          <FunctionImport Name="backupdb" ReturnType="Collection(BDEcoimagenModel.backupdb_Result)" />
+        </EntityContainer>
+        <ComplexType Name="backupdb_Result">
+          <Property Type="String" Name="ruta" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="2000" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BDEcoimagenModelStoreContainer" CdmEntityContainer="BDEcoimagenEntities">
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="BDEcoimagenModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="fecNacimiento" ColumnName="fecNacimiento" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Respaldoes">
+            <EntityTypeMapping TypeName="BDEcoimagenModel.Respaldo">
+              <MappingFragment StoreEntitySet="Respaldo">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="idRespaldo" ColumnName="idRespaldo" />
+                <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+                <ScalarProperty Name="fechaSubida" ColumnName="fechaSubida" />
+                <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+                <ScalarProperty Name="rutaFisica" ColumnName="rutaFisica" />
+                <ScalarProperty Name="tamano" ColumnName="tamano" />
+                <ScalarProperty Name="enlaceDescarga" ColumnName="enlaceDescarga" />
+                <ScalarProperty Name="nodoContenedor" ColumnName="nodoContenedor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seguimientoes">
+            <EntityTypeMapping TypeName="BDEcoimagenModel.Seguimiento">
+              <MappingFragment StoreEntitySet="Seguimiento">
+                <ScalarProperty Name="idSeguimiento" ColumnName="idSeguimiento" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="sintomas" ColumnName="sintomas" />
+                <ScalarProperty Name="resultado" ColumnName="resultado" />
+                <ScalarProperty Name="medicoReferente" ColumnName="medicoReferente" />
+                <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+                <ScalarProperty Name="borrado" ColumnName="borrado" />
+                <ScalarProperty Name="tipoSeguimiento" ColumnName="tipoSeguimiento" />
+                <ScalarProperty Name="ct" ColumnName="ct" />
+                <ScalarProperty Name="gn" ColumnName="gn" />
+                <ScalarProperty Name="cm" ColumnName="cm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="backupdb" FunctionName="BDEcoimagenModel.Store.backupdb">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BDEcoimagenModel.backupdb_Result">
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

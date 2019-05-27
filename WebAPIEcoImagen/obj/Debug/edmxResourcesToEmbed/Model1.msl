@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDEcoimagenModelStoreContainer" CdmEntityContainer="BDEcoimagenEntities">
+    <EntitySetMapping Name="Pacientes">
+      <EntityTypeMapping TypeName="BDEcoimagenModel.Paciente">
+        <MappingFragment StoreEntitySet="Paciente">
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="fecNacimiento" ColumnName="fecNacimiento" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="borrado" ColumnName="borrado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Respaldoes">
+      <EntityTypeMapping TypeName="BDEcoimagenModel.Respaldo">
+        <MappingFragment StoreEntitySet="Respaldo">
+          <ScalarProperty Name="idRespaldo" ColumnName="idRespaldo" />
+          <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
+          <ScalarProperty Name="fechaSubida" ColumnName="fechaSubida" />
+          <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+          <ScalarProperty Name="rutaFisica" ColumnName="rutaFisica" />
+          <ScalarProperty Name="tamano" ColumnName="tamano" />
+          <ScalarProperty Name="enlaceDescarga" ColumnName="enlaceDescarga" />
+          <ScalarProperty Name="nodoContenedor" ColumnName="nodoContenedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seguimientoes">
+      <EntityTypeMapping TypeName="BDEcoimagenModel.Seguimiento">
+        <MappingFragment StoreEntitySet="Seguimiento">
+          <ScalarProperty Name="idSeguimiento" ColumnName="idSeguimiento" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="sintomas" ColumnName="sintomas" />
+          <ScalarProperty Name="resultado" ColumnName="resultado" />
+          <ScalarProperty Name="medicoReferente" ColumnName="medicoReferente" />
+          <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
+          <ScalarProperty Name="borrado" ColumnName="borrado" />
+          <ScalarProperty Name="tipoSeguimiento" ColumnName="tipoSeguimiento" />
+          <ScalarProperty Name="ct" ColumnName="ct" />
+          <ScalarProperty Name="gn" ColumnName="gn" />
+          <ScalarProperty Name="cm" ColumnName="cm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="backupdb" FunctionName="BDEcoimagenModel.Store.backupdb">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDEcoimagenModel.backupdb_Result">
+          <ScalarProperty Name="ruta" ColumnName="ruta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
