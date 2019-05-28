@@ -20,7 +20,7 @@ namespace WebAPIEcoImagen.Controllers
         // GET: api/Pacientes
         public IQueryable<Paciente> GetPacientes()
         {
-            return db.Pacientes;
+            return db.Pacientes.Where(x=>x.borrado==null);
         }
 
         // GET: api/Pacientes/5
@@ -32,6 +32,7 @@ namespace WebAPIEcoImagen.Controllers
             {
                 return NotFound();
             }
+
 
             return Ok(paciente);
         }
@@ -97,21 +98,21 @@ namespace WebAPIEcoImagen.Controllers
         [Route("api/Pacientes/Recientes/{totalPacientes}")]
         public IHttpActionResult GetPacientesRecientes(int totalPacientes)
         {
-            var pacientes = db.Pacientes.OrderByDescending(x => x.idPaciente).Take(totalPacientes);
+            var pacientes = db.Pacientes.Where(x=>x.borrado==null).OrderByDescending(x => x.idPaciente).Take(totalPacientes);
             return Ok(pacientes);
         }
         [HttpGet]
         [Route("api/Pacientes/Genero/{genero}")]
         public IHttpActionResult GetTotalPacientesFromGenero(string genero)
         {
-            var paciente = db.Pacientes.Where(x => x.genero == genero).Count();
+            var paciente = db.Pacientes.Where(x => x.genero == genero && x.borrado==null).Count();
             return Ok(paciente);
         }
         [HttpGet]
         [Route("api/Pacientes/TotalPacientes/")]
         public IHttpActionResult GetTotalPacientes()
         {
-            var pacientes = db.Pacientes.Select(x => x.idPaciente).Count();
+            var pacientes = db.Pacientes.Where(x=>x.borrado==null).Select(x => x.idPaciente).Count();
             return Ok(pacientes);
         }
 
@@ -119,7 +120,7 @@ namespace WebAPIEcoImagen.Controllers
         [Route("api/Pacientes/Seguimientos/{idPaciente}")]
         public IHttpActionResult GetSeguimientosFromPaciente(int idPaciente)
         {
-            var seguimientos = db.Seguimientoes.Where(x => x.idPaciente == idPaciente).ToList();
+            var seguimientos = db.Seguimientoes.Where(x => x.idPaciente == idPaciente && x.borrado==null).ToList();
             return Ok(seguimientos);
         }
         
@@ -136,7 +137,7 @@ namespace WebAPIEcoImagen.Controllers
             int anoActual = DateTime.Now.Year;
             foreach (var dato in datos.meses)
             {
-                int datoMes = db.Seguimientoes.Where(x => x.fecha.Value.Month == mesEntero && x.fecha.Value.Year == anoActual).Count();
+                int datoMes = db.Seguimientoes.Where(x => x.fecha.Value.Month == mesEntero && x.fecha.Value.Year == anoActual && x.borrado==null && x.Paciente.borrado==null).Count();
                 datosMeses.Add(datoMes);
                 mesEntero++;                
             }

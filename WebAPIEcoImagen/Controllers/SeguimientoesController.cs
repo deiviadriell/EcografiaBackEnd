@@ -27,7 +27,7 @@ namespace WebAPIEcoImagen.Controllers
         // GET: api/Seguimientoes
         public IQueryable<Seguimiento> GetSeguimientoes()
         {
-            return db.Seguimientoes;
+            return db.Seguimientoes.Where(x=>x.borrado==null);
         }
 
         // GET: api/Seguimientoes/5
@@ -98,6 +98,8 @@ namespace WebAPIEcoImagen.Controllers
         {
             var predicate = PredicateBuilder.New<Seguimiento>();
             var busqueda = objeto.ToObject<BusquedaSeguimientosFecha>();
+            predicate = predicate.And(x => x.borrado == null);
+            predicate = predicate.And(x => x.Paciente.borrado == null);
             if (busqueda.fechaInicio != null && busqueda.fechaFin != null)
             {
                 var finMasUno = busqueda.fechaFin.Value.AddDays(1);
@@ -122,6 +124,8 @@ namespace WebAPIEcoImagen.Controllers
         {
             var predicate = PredicateBuilder.New<Seguimiento>();
             var busqueda = objeto.ToObject<BusquedaSeguimientosFecha>();
+            predicate = predicate.And(x => x.borrado == null);
+            predicate = predicate.And(x => x.Paciente.borrado == null);
             if (busqueda.fechaInicio != null && busqueda.fechaFin != null)
             {
                 var finMasUno = busqueda.fechaFin.Value.AddDays(1);
@@ -137,6 +141,8 @@ namespace WebAPIEcoImagen.Controllers
         {
             var predicate = PredicateBuilder.New<Seguimiento>();
             var busqueda = objeto.ToObject<BusquedaSeguimientos>();
+            predicate = predicate.And(x => x.borrado == null);
+            predicate = predicate.And(x => x.Paciente.borrado == null);
             switch (busqueda.tipo)
             {
                 //paciente
@@ -198,7 +204,7 @@ namespace WebAPIEcoImagen.Controllers
         [Route("api/Seguimientoes/Total")]
         public IHttpActionResult GetTotalSeguimientos()
         {
-            var seguimientos= db.Seguimientoes.Count();
+            var seguimientos= db.Seguimientoes.Where(x=>x.borrado==null && x.Paciente.borrado==null).Count();
             return Ok(seguimientos);
         }
         [HttpPost]
@@ -298,6 +304,8 @@ namespace WebAPIEcoImagen.Controllers
         {
             var busqueda = objeto.ToObject<BusquedaSeguimientosFecha>();
             var predicate = PredicateBuilder.New<Seguimiento>();
+            predicate = predicate.And(x => x.borrado == null);
+            predicate = predicate.And(x => x.Paciente.borrado == null);
             if (busqueda.fechaInicio != null && busqueda.fechaFin != null)
             {
                 var finMasUno = busqueda.fechaFin.Value.AddDays(1);
