@@ -57,7 +57,7 @@ namespace WebAPIEcoImagen.Controllers
         {
             int ano = DateTime.Now.Year;
             if(!cliente.IsLoggedIn)
-                cliente.Login("xyz", "xyz");
+                cliente.Login("ecoimagenquevedo2019@gmail.com", "ecoimagenquevedo");
             IEnumerable<INode> nodes = cliente.GetNodes();
             List<INode> folders = nodes.Where(n => n.Type == NodeType.Directory).ToList();
             INode myFolder = folders.FirstOrDefault(f => f.Name == "Respaldos"+ano);
@@ -170,7 +170,7 @@ namespace WebAPIEcoImagen.Controllers
                 resultado.rutaFisica = rutaArchivo;
                 db.Respaldoes.Add(resultado);
                 db.SaveChanges();
-                cliente.Login("xyz", "xyz");
+                cliente.Login("ecoimagenquevedo2019@gmail.com", "ecoimagenquevedo");
                 var nodos = cliente.GetNodes(); bool existe = cliente.GetNodes().Any(n => n.Name == "Respaldos"+ano);
                
                 resultado.nodoContenedor = "Respaldos"+ano;
@@ -248,7 +248,7 @@ namespace WebAPIEcoImagen.Controllers
                 resultado.estado = "subiendo a la nube...";
                 db.Respaldoes.Add(resultado);
                 db.SaveChanges();
-                cliente.Login("xyz", "xyz");
+                cliente.Login("ecoimagenquevedo2019@gmail.com", "ecoimagenquevedo");
                 var nodos = cliente.GetNodes(); bool existe = cliente.GetNodes().Any(n => n.Name == "Respaldos");
                 resultado.nodoContenedor = "Respaldos";
                 // Crear dos nodos.
