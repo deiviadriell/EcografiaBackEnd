@@ -90,7 +90,21 @@ namespace WebAPIEcoImagen.Controllers
         [Route("api/Pacientes/Parametro/{parametro}")]
         public IHttpActionResult GetSeguimientosFromPaciente(string parametro)
         {
-            var paciente = db.Pacientes.Where(x => x.borrado == null && (x.nombres.Contains(parametro) || x.apellidos.Contains(parametro) || x.cedula.Contains(parametro) || x.correo.Contains(parametro) || x.direccion.Contains(parametro))).ToList();
+            var paciente = db.Pacientes.Where(x => x.borrado == null && (x.nombres.Contains(parametro) || x.apellidos.Contains(parametro) || x.cedula.Contains(parametro) || x.correo.Contains(parametro) || x.direccion.Contains(parametro))).Select(x => new PacientesReciente
+            {
+                idPaciente = x.idPaciente,
+                cedula = x.cedula,
+                nombres = x.nombres,
+                apellidos = x.apellidos,
+                direccion = x.direccion,
+                telefono = x.telefono,
+                correo = x.correo,
+                fecNacimiento = x.fecNacimiento,
+                genero = x.genero,
+                borrado = x.borrado,
+                fechaUltimaConsulta = x.Seguimientoes.OrderByDescending(q => q.idSeguimiento).Select(y => y.fecha).FirstOrDefault(),
+
+            });
             return Ok(paciente);
         }
 
@@ -98,7 +112,21 @@ namespace WebAPIEcoImagen.Controllers
         [Route("api/Pacientes/Recientes/{totalPacientes}")]
         public IHttpActionResult GetPacientesRecientes(int totalPacientes)
         {
-            var pacientes = db.Pacientes.Where(x=>x.borrado==null).OrderByDescending(x => x.idPaciente).Take(totalPacientes);
+            var pacientes = db.Pacientes.Where(x => x.borrado == null).Select(x => new PacientesReciente
+            {
+                idPaciente = x.idPaciente,
+                cedula = x.cedula,
+                nombres = x.nombres,
+                apellidos = x.apellidos,
+                direccion = x.direccion,
+                telefono = x.telefono,
+                correo = x.correo,
+                fecNacimiento = x.fecNacimiento,
+                genero = x.genero,
+                borrado = x.borrado,
+                fechaUltimaConsulta = x.Seguimientoes.OrderByDescending(q => q.idSeguimiento).Select(y=>y.fecha).FirstOrDefault(),
+
+            }).OrderByDescending(x => x.idPaciente).Take(totalPacientes);
             return Ok(pacientes);
         }
         [HttpGet]

@@ -25,6 +25,9 @@ namespace WebAPIEcoImagen
         public Nullable<int> ct { get; set; }
         public Nullable<int> gn { get; set; }
         public Nullable<int> cm { get; set; }
+        public Nullable<int> idMedicoReferente { get; set; }
+        [JsonIgnore]
+        public virtual Medico Medico { get; set; }
         [JsonIgnore]
         public virtual Paciente Paciente { get; set; }
     }

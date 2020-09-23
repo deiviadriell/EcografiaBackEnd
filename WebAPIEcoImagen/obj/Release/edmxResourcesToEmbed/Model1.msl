@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="BDEcoimagenModelStoreContainer" CdmEntityContainer="BDEcoimagenEntities">
+    <EntitySetMapping Name="Medicos">
+      <EntityTypeMapping TypeName="BDEcoimagenModel.Medico">
+        <MappingFragment StoreEntitySet="Medico">
+          <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+          <ScalarProperty Name="medico1" ColumnName="medico" />
+          <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Pacientes">
       <EntityTypeMapping TypeName="BDEcoimagenModel.Paciente">
         <MappingFragment StoreEntitySet="Paciente">
@@ -20,7 +30,6 @@
     <EntitySetMapping Name="Respaldoes">
       <EntityTypeMapping TypeName="BDEcoimagenModel.Respaldo">
         <MappingFragment StoreEntitySet="Respaldo">
-          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="idRespaldo" ColumnName="idRespaldo" />
           <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
           <ScalarProperty Name="fechaSubida" ColumnName="fechaSubida" />
@@ -29,6 +38,7 @@
           <ScalarProperty Name="tamano" ColumnName="tamano" />
           <ScalarProperty Name="enlaceDescarga" ColumnName="enlaceDescarga" />
           <ScalarProperty Name="nodoContenedor" ColumnName="nodoContenedor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -46,16 +56,9 @@
           <ScalarProperty Name="ct" ColumnName="ct" />
           <ScalarProperty Name="gn" ColumnName="gn" />
           <ScalarProperty Name="cm" ColumnName="cm" />
+          <ScalarProperty Name="idMedicoReferente" ColumnName="idMedicoReferente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="backupdb" FunctionName="BDEcoimagenModel.Store.backupdb">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BDEcoimagenModel.backupdb_Result">
-          <ScalarProperty Name="ruta" ColumnName="ruta" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

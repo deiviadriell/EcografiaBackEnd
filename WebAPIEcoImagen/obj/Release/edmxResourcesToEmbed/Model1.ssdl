@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BDEcoimagenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="idMedico" />
+    </Key>
+    <Property Name="idMedico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="medico" Type="nvarchar" MaxLength="500" />
+    <Property Name="especialidad" Type="nvarchar" MaxLength="200" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
   <EntityType Name="Paciente">
     <Key>
       <PropertyRef Name="idPaciente" />
@@ -44,6 +53,7 @@
     <Property Name="ct" Type="int" />
     <Property Name="gn" Type="int" />
     <Property Name="cm" Type="int" />
+    <Property Name="idMedicoReferente" Type="int" />
   </EntityType>
   <Association Name="FK_Seguimiento_Paciente">
     <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
@@ -57,13 +67,29 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="backupdb" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Association Name="FK_SeguimientoMedico">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idMedico" />
+      </Principal>
+      <Dependent Role="Seguimiento">
+        <PropertyRef Name="idMedicoReferente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="BDEcoimagenModelStoreContainer">
+    <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Respaldo" EntityType="Self.Respaldo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Seguimiento" EntityType="Self.Seguimiento" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Seguimiento_Paciente" Association="Self.FK_Seguimiento_Paciente">
       <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Seguimiento" EntitySet="Seguimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SeguimientoMedico" Association="Self.FK_SeguimientoMedico">
+      <End Role="Medico" EntitySet="Medico" />
       <End Role="Seguimiento" EntitySet="Seguimiento" />
     </AssociationSet>
   </EntityContainer>

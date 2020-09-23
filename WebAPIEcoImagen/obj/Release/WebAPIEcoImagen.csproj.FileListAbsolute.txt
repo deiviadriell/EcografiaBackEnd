@@ -107,11 +107,8 @@ c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoIm
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Security.Cryptography.Encoding.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Security.Cryptography.Primitives.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Security.Cryptography.X509Certificates.dll
-c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\WarstarDev.Office2k7.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\EPPlus.xml
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\OfficeOpenXml.Core.ExcelPackage.pdb
-c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\EntityFramework.resources.dll
-c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\EntityFramework.SqlServer.resources.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\DotNetZip.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\ICSharpCode.SharpZipLib.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.IO.Compression.ZipFile.dll

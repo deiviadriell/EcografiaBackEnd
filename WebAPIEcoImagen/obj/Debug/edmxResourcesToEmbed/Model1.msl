@@ -20,6 +20,7 @@
     <EntitySetMapping Name="Respaldoes">
       <EntityTypeMapping TypeName="BDEcoimagenModel.Respaldo">
         <MappingFragment StoreEntitySet="Respaldo">
+          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="idRespaldo" ColumnName="idRespaldo" />
           <ScalarProperty Name="fechaCreacion" ColumnName="fechaCreacion" />
           <ScalarProperty Name="fechaSubida" ColumnName="fechaSubida" />
@@ -34,6 +35,7 @@
     <EntitySetMapping Name="Seguimientoes">
       <EntityTypeMapping TypeName="BDEcoimagenModel.Seguimiento">
         <MappingFragment StoreEntitySet="Seguimiento">
+          <ScalarProperty Name="idMedico" ColumnName="idMedico" />
           <ScalarProperty Name="idSeguimiento" ColumnName="idSeguimiento" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="sintomas" ColumnName="sintomas" />
@@ -48,13 +50,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="backupdb" FunctionName="BDEcoimagenModel.Store.backupdb">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="BDEcoimagenModel.backupdb_Result">
-          <ScalarProperty Name="ruta" ColumnName="ruta" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <EntitySetMapping Name="Medicos">
+      <EntityTypeMapping TypeName="BDEcoimagenModel.Medico">
+        <MappingFragment StoreEntitySet="Medico">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+          <ScalarProperty Name="medico1" ColumnName="medico" />
+          <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

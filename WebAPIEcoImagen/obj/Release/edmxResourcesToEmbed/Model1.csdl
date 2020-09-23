@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BDEcoimagenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="idMedico" />
+    </Key>
+    <Property Name="idMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="medico1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="especialidad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="Seguimientoes" Relationship="Self.FK_SeguimientoMedico" FromRole="Medico" ToRole="Seguimiento" />
+  </EntityType>
   <EntityType Name="Paciente">
     <Key>
       <PropertyRef Name="idPaciente" />
@@ -45,8 +55,22 @@
     <Property Name="ct" Type="Int32" />
     <Property Name="gn" Type="Int32" />
     <Property Name="cm" Type="Int32" />
+    <Property Name="idMedicoReferente" Type="Int32" />
+    <NavigationProperty Name="Medico" Relationship="Self.FK_SeguimientoMedico" FromRole="Seguimiento" ToRole="Medico" />
     <NavigationProperty Name="Paciente" Relationship="Self.FK_Seguimiento_Paciente" FromRole="Seguimiento" ToRole="Paciente" />
   </EntityType>
+  <Association Name="FK_SeguimientoMedico">
+    <End Role="Medico" Type="Self.Medico" Multiplicity="0..1" />
+    <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idMedico" />
+      </Principal>
+      <Dependent Role="Seguimiento">
+        <PropertyRef Name="idMedicoReferente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Seguimiento_Paciente">
     <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
     <End Role="Seguimiento" Type="Self.Seguimiento" Multiplicity="*" />
@@ -60,17 +84,17 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="BDEcoimagenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Medicos" EntityType="Self.Medico" />
     <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
     <EntitySet Name="Respaldoes" EntityType="Self.Respaldo" />
     <EntitySet Name="Seguimientoes" EntityType="Self.Seguimiento" />
+    <AssociationSet Name="FK_SeguimientoMedico" Association="Self.FK_SeguimientoMedico">
+      <End Role="Medico" EntitySet="Medicos" />
+      <End Role="Seguimiento" EntitySet="Seguimientoes" />
+    </AssociationSet>
     <AssociationSet Name="FK_Seguimiento_Paciente" Association="Self.FK_Seguimiento_Paciente">
       <End Role="Paciente" EntitySet="Pacientes" />
       <End Role="Seguimiento" EntitySet="Seguimientoes" />
     </AssociationSet>
-    <FunctionImport Name="backupdb" ReturnType="Collection(BDEcoimagenModel.backupdb_Result)" />
   </EntityContainer>
-  <ComplexType Name="backupdb_Result">
-    <Property Type="String" Name="ruta" Nullable="true" MaxLength="2000" />
-    <Property Type="String" Name="nombre" Nullable="true" MaxLength="2000" />
-  </ComplexType>
 </Schema>

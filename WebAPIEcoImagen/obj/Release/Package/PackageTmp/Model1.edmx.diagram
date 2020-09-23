@@ -4,10 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="57e26a0c4b58427f969608010674c6dc" Name="Diagram1">
-        <EntityTypeShape EntityType="BDEcoimagenModel.Paciente" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+      <Diagram DiagramId="e3d9b9a3db9f40ce8893ae844228ca2d" Name="Diagram1">
+        <EntityTypeShape EntityType="BDEcoimagenModel.Medico" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDEcoimagenModel.Paciente" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BDEcoimagenModel.Respaldo" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDEcoimagenModel.Seguimiento" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="BDEcoimagenModel.FK_SeguimientoMedico" ManuallyRouted="false" />
         <AssociationConnector Association="BDEcoimagenModel.FK_Seguimiento_Paciente" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

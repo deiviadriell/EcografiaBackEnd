@@ -19,7 +19,7 @@ using LinqKit;
 
 
 namespace WebAPIEcoImagen.Controllers
-{
+{   
     public class SeguimientoesController : ApiController
     {
         private BDEcoimagenEntities db = new BDEcoimagenEntities();

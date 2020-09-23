@@ -28,6 +28,7 @@
     <Property Name="tamano" Type="Int32" />
     <Property Name="enlaceDescarga" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="nodoContenedor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Seguimiento">
     <Key>
@@ -45,6 +46,8 @@
     <Property Name="gn" Type="Int32" />
     <Property Name="cm" Type="Int32" />
     <NavigationProperty Name="Paciente" Relationship="Self.FK_Seguimiento_Paciente" FromRole="Seguimiento" ToRole="Paciente" />
+    <Property Name="idMedico" Type="Int32" />
+    <NavigationProperty Name="Medico" Relationship="BDEcoimagenModel.FK_SeguimientoMedico" FromRole="Seguimiento" ToRole="Medico" />
   </EntityType>
   <Association Name="FK_Seguimiento_Paciente">
     <End Role="Paciente" Type="Self.Paciente" Multiplicity="0..1" />
@@ -67,9 +70,36 @@
       <End Role="Seguimiento" EntitySet="Seguimientoes" />
     </AssociationSet>
     <FunctionImport Name="backupdb" ReturnType="Collection(BDEcoimagenModel.backupdb_Result)" />
+    <EntitySet Name="Medicos" EntityType="BDEcoimagenModel.Medico" />
+    <AssociationSet Name="FK_SeguimientoMedico" Association="BDEcoimagenModel.FK_SeguimientoMedico">
+      <End Role="Medico" EntitySet="Medicos" />
+      <End Role="Seguimiento" EntitySet="Seguimientoes" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="backupdb_Result">
     <Property Type="String" Name="ruta" Nullable="true" MaxLength="2000" />
     <Property Type="String" Name="nombre" Nullable="true" MaxLength="2000" />
   </ComplexType>
+  <EntityType Name="Medico">
+    <Key>
+      <PropertyRef Name="idMedico" />
+    </Key>
+    <Property Name="idMedico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="medico1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="especialidad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="Seguimientoes" Relationship="BDEcoimagenModel.FK_SeguimientoMedico" FromRole="Medico" ToRole="Seguimiento" />
+  </EntityType>
+  <Association Name="FK_SeguimientoMedico">
+    <End Type="BDEcoimagenModel.Medico" Role="Medico" Multiplicity="0..1" />
+    <End Type="BDEcoimagenModel.Seguimiento" Role="Seguimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medico">
+        <PropertyRef Name="idMedico" />
+      </Principal>
+      <Dependent Role="Seguimiento">
+        <PropertyRef Name="idMedico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -56,6 +56,19 @@ namespace WebAPIEcoImagen.Models
         public List<string> meses { get; set; }        
         public List<int> datos { get; set; }
     }
-
+    public class PacientesReciente
+    {
+        public int idPaciente { get; set; }
+        public string cedula { get; set; }
+        public string nombres { get; set; }
+        public string apellidos { get; set; }
+        public string direccion { get; set; }
+        public string telefono { get; set; }
+        public string correo { get; set; }
+        public DateTime? fecNacimiento { get; set; }
+        public string genero { get; set; }
+        public DateTime? borrado { get; set; }
+        public DateTime? fechaUltimaConsulta { get; set; }
+    }
 
 }

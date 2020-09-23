@@ -52,7 +52,6 @@ c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoIm
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Web.WebPages.Deployment.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Web.WebPages.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Web.WebPages.Razor.dll
-c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\WarstarDev.Office2k7.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\WebGrease.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\Antlr3.Runtime.pdb
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\DotNetZip.pdb
@@ -94,8 +93,6 @@ c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoIm
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Web.WebPages.xml
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Web.WebPages.Deployment.xml
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\System.Web.WebPages.Razor.xml
-c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\EntityFramework.resources.dll
-c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\EntityFramework.SqlServer.resources.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
@@ -118,3 +115,4 @@ c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoIm
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\bin\es\System.Web.WebPages.Razor.resources.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\obj\Debug\WebAPIEcoImagen.dll
 c:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\obj\Debug\WebAPIEcoImagen.pdb
+C:\Users\jorge\Documents\Visual Studio 2015\Projects\WebAPIEcoImagen\WebAPIEcoImagen\obj\Debug\WebAPIEcoImagen.csprojResolveAssemblyReference.cache

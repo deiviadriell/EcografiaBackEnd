@@ -12,8 +12,6 @@ namespace WebAPIEcoImagen
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class BDEcoimagenEntities : DbContext
     {
@@ -27,13 +25,9 @@ namespace WebAPIEcoImagen
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Medico> Medicos { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
         public virtual DbSet<Respaldo> Respaldoes { get; set; }
         public virtual DbSet<Seguimiento> Seguimientoes { get; set; }
-    
-        public virtual ObjectResult<backupdb_Result> backupdb()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<backupdb_Result>("backupdb");
-        }
     }
 }
